@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <&HTML-AND-JAVASCRIPT(.css)>
+    <title>Double TAP - Text and Test Anything Protocol</title>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Hello Double TAP</p>
+        <p class="subtitle">Text and Test Anything Protocol</p>
+        <p class="control">
+          Double TAP is lightweight testing framework where users write black box tests as rules
+          checking output from tested "boxes". Boxes could be anything from http client, web server
+          to messages in syslog. This universal approach allows to test anything with just dropping
+          text rules describing system behaviour in black box manner.
+        </p>
+        <p class="control">
+          Follwing a simple example for http web server. <hr>Double TAP code:
+          <pre>
+          <code>HTTP/1.1 200 OK
+Server: gunicorn/19.9.0</code></pre>
+          Implementation code (the one producing output):
+          <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head</code></pre>
+          Test report:
+          <pre>[task stdout]
+22:39:23 :: HTTP/1.1 200 OK
+22:39:23 :: Date: Wed, 31 Dec 2025 19:39:23 GMT
+22:39:23 :: Content-Type: text/html; charset=utf-8
+22:39:23 :: Content-Length: 9593
+22:39:23 :: Connection: keep-alive
+22:39:23 :: Server: gunicorn/19.9.0
+22:39:23 :: Access-Control-Allow-Origin: *
+22:39:23 :: Access-Control-Allow-Credentials: true
+22:39:23 :: 
+[task check]
+stdout match <HTTP/1.1 200 OK> True
+stdout match <Server: gunicorn/19.9.0> True</pre>
+          <hr>
+          Double TAP checks are executed via API, given a tested output is in file data.in,
+          and desired check is named `http-unicorn`:
+          <pre><code class="language-bash">curl --data-urlencode "in=@data.in"  --data-urlencode "check=http-unicorn" http://doubletab.sparrowhub.io/check</code></pre>
+          <hr>
+          Some more <a href="https://github.com/melezhik/doubletap/tree/main/examples">examples</a> some double tap checks
+        </p>
+      </div>
+    </section>
+</body>
+</html>
