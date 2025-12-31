@@ -33,14 +33,14 @@ Server: gunicorn/19.9.0</code></pre>
 22:39:23 :: Access-Control-Allow-Credentials: true
 22:39:23 :: 
 [task check]
-stdout match <HTTP/1.1 200 OK> True
-stdout match <Server: gunicorn/19.9.0> True</pre>
+stdout match &lt;HTTP/1.1 200 OK&gt; True
+stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
           Double TAP checks are executed via API, given a tested output is in file data.in,
-          and desired check is named `http-unicorn`:
-          <pre><code class="language-bash">curl --data-urlencode "in=@data.in"  --data-urlencode "check=http-unicorn" http://doubletab.sparrowhub.io/check</code></pre>
+          and desired check is named http-gunicorn:
+          <pre><code class="language-bash">curl --data-urlencode "in=@data.in"  --data-urlencode "check=http-gunicorn" http://doubletab.sparrowhub.io/check</code></pre>
           <hr>
-          Some more <a href="https://github.com/melezhik/doubletap/tree/main/examples">examples</a> some double tap checks
+          Some more <a href="https://github.com/melezhik/doubletap/tree/main/examples">examples</a> of double tap checks
         </p>
       </div>
     </section>
