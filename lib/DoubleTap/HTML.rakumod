@@ -12,6 +12,9 @@ sub css () is export {
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma\@{$bulma-version}/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex\@0.15.0/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/\@wcj/markdown-to-html/dist/marked.css">
+  <script src="https://unpkg.com/\@wcj/markdown-to-html/dist/markdown.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/perl.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
@@ -37,34 +40,12 @@ sub navbar () is export {
       </div>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="{http-root()}/projects">
-            Projects
+          <a class="navbar-item" href="{http-root()}/">
+            Home
           </a>
-          <a class="navbar-item" href="{http-root()}/builds_latest">
-            Recent Builds
+          <a class="navbar-item" href="{http-root()}/examples">
+            Examples
           </a>
-          <a class="navbar-item" href="{http-root()}/builds">
-            All Builds
-          </a>
-          <a class="navbar-item" href="{http-root()}/queue">
-            Queue
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="{http-root()}/about">
-                About
-              </a>
-              <a class="navbar-item" href="https://github.com/melezhik/sparky">
-                Docs
-              </a>
-              <a class="navbar-item" href="https://github.com/melezhik/sparky/issues">
-                Report an issue
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </nav>

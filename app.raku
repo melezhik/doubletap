@@ -13,6 +13,14 @@ my $application = route {
     )
   }
 
+  get -> 'examples', {
+    template 'templates/examples.crotmp', %( 
+      css => css(), 
+      navbar => navbar(),
+      examples => "examples.md".IO.slurp, 
+    )
+  }
+
 }
 
 my Cro::Service $service = Cro::HTTP::Server.new:

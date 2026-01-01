@@ -4,6 +4,7 @@
     <title>Double TAP - Text and Test Anything Protocol</title>
   </head>
   <body>
+    <&HTML-AND-JAVASCRIPT(.navbar)>
     <section class="hero">
       <div class="hero-body">
         <p class="title">Hello Double TAP</p>
@@ -42,7 +43,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
   "report": " ... "
 }</code></pre>
           <hr>
-          Check some <a href="https://github.com/melezhik/doubletap/blob/main/examples.md">examples</a> here.
+          Check some <a href="/examples">examples</a> here.
           Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
         </p>
         <hr>
