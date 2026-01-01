@@ -1,5 +1,20 @@
-# ssh login attempts
+# redis authentication 
 
+Check if redis protected by authentication
+
+## check
+
+```
+NOAUTH Authentication required
+```
+
+## box
+
+```
+redis-cli ping 2>&1 || :
+```
+
+# ssh login attempts
 
 Find unsuccessful login attempts and return
 all found logins.
@@ -22,5 +37,5 @@ stat
 ### box
 
 ```
-sudo cat /var/log/auth.log > data.in
+sudo cat /var/log/auth.log
 ```
