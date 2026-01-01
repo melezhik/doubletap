@@ -53,7 +53,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <li>            
             <span class="tag is-black">Decoupled tests</span> 
             <hr>
-            Write once, use for many boxes. Tests are define "interface", which 
+            Write once, use for many boxes. Tests define "interface", which 
             could be implemented in many ways on many tested boxes. For example if write test 
             for package installation like this:
             <pre>Status: install ok installed</pre>
