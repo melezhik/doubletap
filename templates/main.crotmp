@@ -77,6 +77,16 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             Tests are no longer embedded into hidden implementation, test driven development encourages
             other participants to implement software that passes tests, not software including tests
           </li>
+          <li>
+            <br>            
+            <span class="tag is-black">Why it's called Double TAP</span>
+            <hr> 
+            TAP is well known and mature protocol that is widely used in unit testing.
+            The pun is to add "texting" to "testing", so we end up double T or Double TAP protocol.
+            Here is the association ends. However Double TAP differ from TAP is black box testing
+            protocol rather then unit testing. Texting means tests are based on the idea of verifying
+            system behavior by checking text messages produced by set of rules.
+          </li>
         </ul>
       </div>
 </body>
