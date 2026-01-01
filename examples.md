@@ -76,7 +76,7 @@ end:
 ## box
 
 ```
-# Check service is enabled and running
+# Enable and start DNS server
 sudo systemctl is-enabled knot
 sudo systemctl is-active knot
 
