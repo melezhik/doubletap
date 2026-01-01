@@ -12,13 +12,13 @@
           Double TAP is lightweight testing framework where users write black box tests as rules
           checking output from tested "boxes". Boxes could be anything from http client, web server
           to messages in syslog. This universal approach allows to test anything with just dropping
-          text rules describing system behaviour in black box manner.
+          text rules describing system behavior in black box manner.
         </p>
         <p class="control">
-          Follwing a simple example for http web server. <hr>Double TAP code:
+          Following a simple example for http web server. <hr>Double TAP code:
           <pre>
-          <code>HTTP/1.1 200 OK
-Server: gunicorn/19.9.0</code></pre>
+HTTP/1.1 200 OK
+Server: gunicorn/19.9.0</pre>
           Implementation code (the one producing output):
           <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head</code></pre>
           Test report:
@@ -37,12 +37,47 @@ stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
           Double TAP checks are executed via API, given a tested output is in file data.in,
-          and desired check is named http-gunicorn:
+          and check is named http-gunicorn:
           <pre><code class="language-bash">curl --data-urlencode "in=@data.in"  --data-urlencode "check=http-gunicorn" http://doubletab.sparrowhub.io/check</code></pre>
+          Example reply:
+          <pre><code class="language-json">{
+  "status": "OK",
+  "report": " ... "
+}</code></pre>
           <hr>
           Some more <a href="https://github.com/melezhik/doubletap/tree/main/examples">examples</a> of double tap checks
         </p>
       </div>
     </section>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Protocol features</p>
+        <ul>
+          <li>            
+            <span class="tag is-black">Decoupled tests</span> 
+            <hr>
+            Write once, use for many boxes. Tests are define "interface", which 
+            could be implemented in many ways on many tested boxes. For example if write test 
+            for package installation like this:
+            <pre>Status: install ok installed</pre>
+            <br>
+            The implementation logic could be verified for many Linux distributions.
+            <br><br>
+            Debian/Ubuntu:
+            <pre><code class="language-bash">dpkg  -s nano # stdout - Status: install ok installed</code></pre>
+            <br>
+            Rocky Linux:
+            <pre><code class="language-bash">rpm -q  nano && echo "Status: install ok installed"</code></pre>
+          </li>
+          <li>
+            <br>            
+            <span class="tag is-black">Community contribution</span>
+            <hr> 
+            With time the more people involved the more tests are available for public consumption.
+            Tests are no longer embedded into hidden implementation, test driven development encourages
+            other participants to implement software that passes tests, not software including tests
+          </li>
+        </ul>
+      </div>
 </body>
 </html>
