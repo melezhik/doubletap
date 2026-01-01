@@ -90,6 +90,7 @@ dig a @127.0.0.1 +short www.example.com
 dig a @127.0.0.1 +short mail.example.com
 dig mx @127.0.0.1 +short example.com
 ```
+
 # ssh login attempts
 
 Find unsuccessful login attempts and return

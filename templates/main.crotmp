@@ -44,7 +44,6 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
           Check some <a href="https://github.com/melezhik/doubletap/blob/main/examples.md">examples</a> here.
           Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
-          
         </p>
       </div>
     </section>
