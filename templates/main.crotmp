@@ -80,9 +80,8 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             <hr> 
             TAP is well known and mature protocol that is widely used in unit testing.
             The pun is to add "texting" to "testing", so we end up double T or Double TAP protocol.
-            Here is the association ends. However Double TAP differ from TAP is black box testing
-            protocol rather then unit testing. Texting means tests are based on the idea of verifying
-            system behavior by checking text messages produced by set of rules.
+            Here is the association ends. Double TAP differs from TAP, being more generic and black box testing framework. Texting means tests are based on the idea of verifying
+            system behavior by checking produced text messages against set of rules.
           </li>
         </ul>
       </div>
