@@ -43,7 +43,7 @@ mail   IN  A      172.20.0.102 ; mail server definition
 ## check
 
 ```
-note: check that service is enabled and active
+note: Check that service is enabled and active
 begin:
     # server should be enabled
     enabled
@@ -55,7 +55,7 @@ note: Check DNS resolution using host command
 begin:
     Using domain server:
     Name: 127.0.0.1
-    Address: 127.0.0.1#53530
+    Address: 127.0.0.1
     Aliases:
     regexp: ^^  $$
     example.com has address 172.20.0.100
