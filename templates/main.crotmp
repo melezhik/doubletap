@@ -42,7 +42,9 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
   "report": " ... "
 }</code></pre>
           <hr>
-          Some more <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">examples</a> of double tap checks
+          Check some <a href="https://github.com/melezhik/doubletap/blob/main/examples.md">examples</a> here.
+          Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
+          
         </p>
       </div>
     </section>
