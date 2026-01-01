@@ -21,6 +21,24 @@ my $application = route {
     )
   }
 
+  #
+  # Static files methods
+  #
+
+  get -> 'js', *@path {
+    cache-control :public, :max-age(300);
+    static 'js', @path;
+  }
+
+  get -> 'css', *@path {
+    cache-control :public, :max-age(10);
+    static 'css', @path;
+  }
+
+  #
+  # End of Static files methods
+  #
+
 }
 
 my Cro::Service $service = Cro::HTTP::Server.new:
