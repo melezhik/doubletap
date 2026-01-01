@@ -71,7 +71,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           </li>
           <li>
             <br>            
-            <span class="tag is-black">Community contribution</span>
+            <span class="tag is-black">Community driven tests</span>
             <hr> 
             With time the more people involved the more tests are available for public consumption.
             Tests are no longer embedded into hidden implementation, test driven development encourages
