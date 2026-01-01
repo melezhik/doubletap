@@ -14,11 +14,11 @@ NOAUTH Authentication required
 redis-cli ping 2>&1 || :
 ```
 
-# domain names server
+# domain name server
 
 Check that domain server works correctly.
 
-DNS setup expected (example for ):
+DNS setup expected:
 
 ```
 $TTL    86400 ; How long should records last?
@@ -76,7 +76,7 @@ end:
 ## box
 
 ```
-# Check knot is enabled and running
+# Check service is enabled and running
 sudo systemctl is-enabled knot
 sudo systemctl is-active knot
 
