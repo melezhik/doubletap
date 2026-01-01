@@ -29,9 +29,6 @@ Server: gunicorn/19.9.0</pre>
 22:39:23 :: Content-Length: 9593
 22:39:23 :: Connection: keep-alive
 22:39:23 :: Server: gunicorn/19.9.0
-22:39:23 :: Access-Control-Allow-Origin: *
-22:39:23 :: Access-Control-Allow-Credentials: true
-22:39:23 :: 
 [task check]
 stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
