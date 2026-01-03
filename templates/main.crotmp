@@ -44,6 +44,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
 }</code></pre>
         </p>
         <p class="control">
+    <hr>
     Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
     The previous example could be rewtitren in equalent form:
           <pre><code class="language-bash">dtap --box http-gunicorn --check http-gunicorn --param site=http://httpbin.org</code></pre>
