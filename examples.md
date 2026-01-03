@@ -29,7 +29,7 @@ redis-cli ping 2>&1 || :
 # domain name server
 
 Check that domain server works correctly,
-by quering dns entries and checking
+by queering dns entries and checking
 systemd status.
 
 For example, if following DNS configuration is set:
@@ -53,6 +53,8 @@ ns1    IN  A      172.20.0.100 ; name server definition
 www    IN  A      172.20.0.101 ; web server definition
 mail   IN  A      172.20.0.102 ; mail server definition
 ```
+
+We can check such a configuration with following check rule
 
 ## box_id
 
@@ -100,7 +102,7 @@ begin:
 end:
 ```
 
-## box implemetation example
+## box implementation example
 
 ```
 # Enable and start DNS server
