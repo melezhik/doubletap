@@ -7,7 +7,7 @@
     <&HTML-AND-JAVASCRIPT(.navbar)>
     <section class="hero">
       <div class="hero-body">
-        <p class="title">Check Examples</p>
+        <p class="title">Boxes</p>
         <hr>
         <p class="markdown-body" id="data"><.examples></p>
       </div>
