@@ -42,15 +42,16 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
   "status": "OK",
   "report": " ... "
 }</code></pre>
-          <hr>
-          <p class="control">
-           Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
-          The previous example could be rewtitren in equalent form:
+        </p>
+        <p class="control">
+    Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
+    The previous example could be rewtitren in equalent form:
           <pre><code class="language-bash">dtap --box http-gunicorn --check http-gunicorn</code></pre>
-          </p>
-          <hr>
-          Check some <a href="/examples">examples</a> here.
-          Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
+        </p>
+        <p class="control">
+    <hr>
+    Check some <a href="/examples">examples</a> here.
+    Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
         </p>
         <hr>
         <p class="title">Protocol features</p>
