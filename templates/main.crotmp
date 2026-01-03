@@ -34,14 +34,20 @@ Server: gunicorn/19.9.0</pre>
 stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
-          Double TAP checks are executed via API, given a tested output is in file data.in,
+          Double TAP checks are executed via API, for previous example:
           and check is named http-gunicorn:
-          <pre><code class="language-bash">curl --data-urlencode "in=@data.in"  --data-urlencode "check=http-gunicorn" http://doubletab.sparrowhub.io/check</code></pre>
-          Example reply:
+          <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head | dtap --box - --check http-gunicorn</code></pre>
+          API reply:
           <pre><code class="language-json">{
   "status": "OK",
   "report": " ... "
 }</code></pre>
+          <hr>
+          <p class="control">
+           Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
+          The previous example could be rewtitren in equalent form:
+          <pre><code class="language-bash">dtap --box http-gunicorn --check http-gunicorn</code></pre>
+          </p>
           <hr>
           Check some <a href="/examples">examples</a> here.
           Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
