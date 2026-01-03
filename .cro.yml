@@ -3,7 +3,10 @@ id: doubletap
 name: DoubleTap
 entrypoint: app.raku
 ignore:
-  - repo
   - .cache
-  - misc
-  - utils/
+  - js
+  - main
+  - main.go
+  - go.mod
+  - examples.md
+  - dtap

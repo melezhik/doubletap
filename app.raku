@@ -21,6 +21,12 @@ my $application = route {
     )
   }
 
+  post -> 'api', {
+    request-body -> %json {
+      content 'application/json', %json;
+    }
+  }
+
   #
   # Static files methods
   #
