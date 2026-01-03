@@ -28,9 +28,11 @@ redis-cli ping 2>&1 || :
 
 # domain name server
 
-Check that domain server works correctly.
+Check that domain server works correctly,
+by quering dns entries and checking
+systemd status.
 
-DNS setup expected:
+For example, if following DNS configuration is set:
 
 ```
 $TTL    86400 ; How long should records last?
@@ -62,7 +64,8 @@ dns-setup-ok
 
 ## params 
 
-host
+- host
+- port
 
 ## check rule
 
