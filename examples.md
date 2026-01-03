@@ -120,11 +120,11 @@ dig mx @127.0.0.1 +short example.com
 Find unsuccessful login attempts and return
 all found logins.
 
-# box_id
+## box_id
 
 ssh-log
 
-# check_id
+## check_id
 
 ssh-login-attempt
 
@@ -143,7 +143,7 @@ update_state(%( data => $data ));
 stat
 ```
 
-### box implementation example
+## box implementation example
 
 ```
 sudo cat /var/log/auth.log
