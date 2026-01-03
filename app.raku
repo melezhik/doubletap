@@ -13,7 +13,7 @@ my $application = route {
     )
   }
 
-  get -> 'examples', {
+  get -> 'boxes', {
     template 'templates/examples.crotmp', %( 
       css => css(), 
       navbar => navbar(),
