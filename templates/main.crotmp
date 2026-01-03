@@ -35,8 +35,8 @@ stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
           Double TAP checks are executed via API, for previous example:
-          and check is named http-gunicorn:
-          <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head | dtap --box - --check http-gunicorn</code></pre>
+          check is named web-server-ok:
+          <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head | dtap --box - --check web-server-ok --params fashion=gunicorn</code></pre>
           API reply:
           <pre><code class="language-json">{
   "status": "OK",
@@ -47,7 +47,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
     <hr>
     Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
     The previous example could be rewtitren in equalent form:
-          <pre><code class="language-bash">dtap --box http-gunicorn --check http-gunicorn --param site=http://httpbin.org</code></pre>
+          <pre><code class="language-bash">dtap --box web-server --check web-server-ok --params site=http://httpbin.org,fashion=gunicorn</code></pre>
         </p>
         <p class="control">
     <hr>
@@ -77,9 +77,9 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             <br>            
             <span class="tag is-black">Predefined boxes</span>
             <hr>
-            Predefined boxes come as a part of dtap cli distrubution. No need to 
+            Predefined boxes come as a part of dtap cli distribution. No need to 
             implement tests for some typical cases, just use them with
-            --box parameter and overidding box input settings via --param.
+            --box parameter and overidding box input settings via --params.
             <hr>
              For custom boxes just redirect output for verification via --box - 
 
