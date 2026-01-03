@@ -75,9 +75,20 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           </li>
           <li>
             <br>            
+            <span class="tag is-black">Predefined boxes</span>
+            <hr>
+            Predefined boxes come as a part of dtap cli distrubution. No need to 
+            implement tests for some typical cases, just use them with
+            --box parameter and overidding box input settings via --param.
+            <hr>
+             For custom boxes just redirect output for verification via --box - 
+
+          </li>
+          <li>
+            <br>            
             <span class="tag is-black">Community driven tests</span>
             <hr> 
-            With time the more people involved the more tests are available for public consumption.
+            With time the more people involved the more boxes and check rules are available for public consumption.
             Tests are no longer embedded into hidden implementation, test driven development encourages
             other participants to implement software that passes tests, not software including tests
           </li>
