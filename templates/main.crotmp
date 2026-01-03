@@ -46,7 +46,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
         <p class="control">
     <hr>
     Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
-    The previous example could be rewtitren in equalent form:
+    The previous example could be rewritten in equivalent form:
           <pre><code class="language-bash">dtap --box web-server --check web-server-ok --params site=http://httpbin.org,fashion=gunicorn</code></pre>
         </p>
         <p class="control">
@@ -79,7 +79,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             <hr>
             Predefined boxes come as a part of dtap cli distribution. No need to 
             implement tests for some typical cases, just use them with
-            --box parameter and overidding box input settings via --params.
+            --box parameter and overriding box input settings via --params.
             <hr>
              For custom boxes just redirect output for verification via --box - 
 
@@ -94,9 +94,9 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           </li>
            <li>
             <br>            
-            <span class="tag is-black">TDD/BDD embeded</span>
+            <span class="tag is-black">TDD/BDD embedded</span>
             <hr> 
-            Check rules are blueprint, rough specification of system behaviour. So we not just write test,
+            Check rules are blueprint, rough specification of system behavior. So we not just write test,
              we describe the system before it's even implemented. Think cucumber tool but with focus on messages.
           </li>
           <li>
