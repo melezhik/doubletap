@@ -2,13 +2,25 @@
 
 Check if redis protected by authentication
 
-## check
+## box_id
+
+redis-auth
+
+## check_id
+
+redis-auth-ok
+
+## params 
+
+redis_url
+
+## check rule
 
 ```
 NOAUTH Authentication required
 ```
 
-## box
+## box implementation example
 
 ```
 redis-cli ping 2>&1 || :
@@ -40,7 +52,19 @@ www    IN  A      172.20.0.101 ; web server definition
 mail   IN  A      172.20.0.102 ; mail server definition
 ```
 
-## check
+## box_id
+
+dns-setup
+
+## check_id
+
+dns-setup-ok
+
+## params 
+
+host
+
+## check rule
 
 ```
 note: Check that service is enabled and active
@@ -73,7 +97,7 @@ begin:
 end:
 ```
 
-## box
+## box implemetation example
 
 ```
 # Enable and start DNS server
@@ -96,7 +120,15 @@ dig mx @127.0.0.1 +short example.com
 Find unsuccessful login attempts and return
 all found logins.
 
-## check
+# box_id
+
+ssh-log
+
+# check_id
+
+ssh-login-attempt
+
+## check rule
 
 ```
 ~regexp: "Failed password for" \s+ (\S+) \s+ from
@@ -111,7 +143,7 @@ update_state(%( data => $data ));
 stat
 ```
 
-### box
+### box implementation example
 
 ```
 sudo cat /var/log/auth.log
