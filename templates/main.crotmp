@@ -92,6 +92,13 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             Tests are no longer embedded into hidden implementation, test driven development encourages
             other participants to implement software that passes tests, not software including tests
           </li>
+           <li>
+            <br>            
+            <span class="tag is-black">TDD/BDD embeded</span>
+            <hr> 
+            Check rules are blueprint, rough specification of system behaviour. So we not just write test,
+             we describe the system before it's even implemented. Think cucumber tool but with focus on messages.
+          </li>
           <li>
             <br>            
             <span class="tag is-black">Why it's called Double TAP</span>
