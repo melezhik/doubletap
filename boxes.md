@@ -1,6 +1,6 @@
 # echo  
 
-Check if text contains a string
+Check if a text contains a string
 
 ## check_id
 
