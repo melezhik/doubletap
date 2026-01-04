@@ -9,3 +9,4 @@ ignore:
   - main.go
   - go.mod
   - dtap
+  - notes.txt
