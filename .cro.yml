@@ -8,5 +8,4 @@ ignore:
   - main
   - main.go
   - go.mod
-  - examples.md
   - dtap
