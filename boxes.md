@@ -1,3 +1,40 @@
+# echo  
+
+Check if text contains a string
+
+## check_id
+
+echo
+
+## params 
+
+word
+
+## box implementation example
+
+```
+echo "hello world"
+```
+
+# web server
+
+Check if a web server returns 200 OK, and
+has a specific web server flavour
+
+## check_id
+
+web-server-ok
+
+## params 
+
+fashion
+
+## box implementation example
+
+```
+curl http://httpbin.org -D - -s -o /deb/null | head -n 6
+```
+
 # redis authentication 
 
 Check if redis protected by authentication
