@@ -27,6 +27,7 @@ my $application = route {
       content 'application/json', %json;
       my $check_id = %json<check_id>;
       my $data = %json<data>;
+      my $desc = %json<desc>;
       if "checks/{$check_id}/task.check".IO ~~ :f {
         my $tmpdir = tempdir;
         copy "checks/{$check_id}/task.check", "$tmpdir/task.check";
@@ -48,12 +49,13 @@ my $application = route {
             say "Command failed with exit code: " ~ $ex-code;
             $status = False;
         }
-        if %json<format> eq "json" {
-           my %res = %( status => ( $status == True ?? "OK" !! "FAIL" ), report => $out );
-           content 'application/json', %res; 
-        } else {
-          content 'text/plain', $out;
-        }
+        my %res = %( 
+          status => ( $status == True ?? "OK" !! "FAIL" ), 
+          report => $out,
+          check => $check_id,
+          desc => $desc,
+        );
+        content 'application/json', %res; 
       } else {
         not-found();
       }
