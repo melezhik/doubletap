@@ -103,8 +103,11 @@ dns-setup-ok
 
 ## params 
 
-- host
-- port
+- dns_host
+- dns_port
+- name_server_ip
+- web_server_ip
+- mail_server_ip
 
 ## check rule
 
