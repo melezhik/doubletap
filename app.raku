@@ -3,6 +3,7 @@ use Cro::HTTP::Server;
 use Cro::WebApp::Template;
 use DoubleTap;
 use DoubleTap::HTML;
+use File::Temp;
 
 my $application = route {
 
@@ -14,16 +15,48 @@ my $application = route {
   }
 
   get -> 'boxes', {
-    template 'templates/examples.crotmp', %( 
+    template 'templates/boxes.crotmp', %( 
       css => css(), 
       navbar => navbar(),
-      examples => "examples.md".IO.slurp, 
+      examples => "boxes.md".IO.slurp, 
     )
   }
 
   post -> 'api', {
     request-body -> %json {
       content 'application/json', %json;
+      my $check_id = %json<check_id>;
+      my $data = %json<data>;
+      if "checks/{$check_id}/task.check".IO ~~ :f {
+        my $tmpdir = tempdir;
+        copy "checks/{$check_id}/task.check", "$tmpdir/task.check";
+        if "checks/{$check_id}/config.yaml".IO ~~ :f {
+          copy "checks/{$check_id}/config.yaml", "$tmpdir/config.yaml";
+        }
+        "$tmpdir/data.txt".IO.spurt($data);
+        "$tmpdir/task.bash".IO.spurt("cat data.txt");
+        my $s6-cmd = "cd $tmpdir && s6 --task-run .";
+        if %json<params> {
+          $s6-cmd ~= "\@{%json<params>}";
+        }
+        $s6-cmd ~= " 2>\&1; echo \$?";
+        my $out = qqx[$s6-cmd];
+        my $status = True;
+        my $ex-code = Int($out.chomp.split(/\n/).tail);
+        if $$ex-code != 0 {
+            say "Out: " ~ $out;
+            say "Command failed with exit code: " ~ $ex-code;
+            $status = False;
+        }
+        if %json<format> eq "json" {
+           my %res = %( status => ( $status == True ?? "OK" !! "FAIL" ), data => $out );
+           content 'application/json', %res; 
+        } else {
+          content 'text/plain', $out;
+        }
+      } else {
+        not-found();
+      }
     }
   }
 

@@ -1,0 +1,4 @@
+generator: <<echo
+!bash
+echo $(config word)
+echo
