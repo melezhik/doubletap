@@ -49,7 +49,7 @@ my $application = route {
             $status = False;
         }
         if %json<format> eq "json" {
-           my %res = %( status => ( $status == True ?? "OK" !! "FAIL" ), data => $out );
+           my %res = %( status => ( $status == True ?? "OK" !! "FAIL" ), report => $out );
            content 'application/json', %res; 
         } else {
           content 'text/plain', $out;

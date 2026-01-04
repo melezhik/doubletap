@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 type Check struct {
@@ -18,11 +19,17 @@ type Check struct {
 	Format  string `json:"format"`
 }
 
+type CheckResult struct {
+	Status string `json:"status"`
+	Report string `json:"report"`
+}
+
 func main() {
 
 	check := flag.String("check", "hello", "the name of check")
 	box := flag.String("box", "hello", "the name of box")
 	params := flag.String("params", "", "params")
+	session := flag.String("session", "", "session id")
 	api := flag.String("api", "http://127.0.0.1:9191", "api url")
 	format := flag.String("format", "text", "output format")
 
@@ -39,6 +46,11 @@ func main() {
 	formatParam := *format
 	apiParam := *api
 	paramsParam := *params
+	sessionParam := *session
+
+	if sessionParam != "" {
+		formatParam = "json"
+	}
 
 	if *verbose {
 		// In a real app, you'd use strings.ToUpper
@@ -47,6 +59,7 @@ func main() {
 		fmt.Printf("paramsParam: %s\n", paramsParam)
 		fmt.Printf("formatParam: %s\n", formatParam)
 		fmt.Printf("apiParam: %s\n", apiParam)
+		fmt.Printf("sessionParam: %s\n", sessionParam)
 	}
 
 	var check_data Check
@@ -54,10 +67,10 @@ func main() {
 	if boxParam == "-" {
 
 		fmt.Printf("read box output from stdin \n")
-			
-		data, err := io.ReadAll(os.Stdin);
 
-		if  err != nil {
+		data, err := io.ReadAll(os.Stdin)
+
+		if err != nil {
 			fmt.Fprintln(os.Stderr, "reading standard input:", err)
 		}
 
@@ -65,7 +78,7 @@ func main() {
 			Data:    string(data),
 			CheckId: checkParam,
 			Params:  paramsParam,
-			Format: formatParam,
+			Format:  formatParam,
 		}
 
 	}
@@ -95,19 +108,47 @@ func main() {
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
+
 	resp, err := client.Do(req)
+
 	if err != nil {
 		panic(err)
 	}
+
 	defer resp.Body.Close()
-
-	fmt.Println("response Status:", resp.Status)
-
-	fmt.Println("response Headers:", resp.Header)
 
 	body, _ := io.ReadAll(resp.Body)
 
-	fmt.Println("response Body:", string(body))
+	if sessionParam != "" {
+		var r CheckResult
+		err := json.Unmarshal(body, &r)
+		if err != nil {
+			log.Fatalf("error unmarshalling: %v", err)
+		}
+		now := time.Now()
+		hdir, err := os.UserHomeDir()
+		report_id := now.UnixNano()
+		dir := fmt.Sprintf("%s/.dtap/%s/%d", hdir, sessionParam, report_id)
+		err = os.MkdirAll(dir, 0755)
+		if err != nil {
+			log.Fatalf("Error creating directory:", err)
+		}
+		file := fmt.Sprintf("%s/%d.out",dir, report_id)
+		err = os.WriteFile(file, []byte(r.Report), 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+		file = fmt.Sprintf("%s/%d.status",dir, report_id)
+		err = os.WriteFile(file, []byte(r.Status), 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		fmt.Println("%s", string(body))
+	}
 
-	//fmt.Printf("body: %s\n", body)
+	//fmt.Println("response Status:", resp.Status)
+
+	//fmt.Println("response Headers:", resp.Header)
+
 }
