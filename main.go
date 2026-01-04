@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -55,17 +54,15 @@ func main() {
 	if boxParam == "-" {
 
 		fmt.Printf("read box output from stdin \n")
+			
+		data, err := io.ReadAll(os.Stdin);
 
-		scanner := bufio.NewScanner(os.Stdin)
-
-		scanner.Scan()
-
-		if err := scanner.Err(); err != nil {
+		if  err != nil {
 			fmt.Fprintln(os.Stderr, "reading standard input:", err)
 		}
 
 		check_data = Check{
-			Data:    scanner.Text(),
+			Data:    string(data),
 			CheckId: checkParam,
 			Params:  paramsParam,
 			Format: formatParam,
