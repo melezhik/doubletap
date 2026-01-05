@@ -18,7 +18,15 @@ my $application = route {
     template 'templates/examples.crotmp', %( 
       css => css(), 
       navbar => navbar(),
-      examples => "examples.md".IO.slurp, 
+      data => "examples.md".IO.slurp, 
+    )
+  }
+
+  get -> 'bash', {
+    template 'templates/bash.crotmp', %( 
+      css => css(), 
+      navbar => navbar(),
+      data => "bash.md".IO.slurp, 
     )
   }
 

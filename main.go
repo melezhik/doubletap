@@ -55,7 +55,7 @@ func main() {
 
 	if reportParam == true && sessionParam != "" {
 
-		fmt.Printf("DTAP report\n===\n");
+		fmt.Printf("DTAP report\nsession: %s\n===\n",sessionParam);
 		hdir, err := os.UserHomeDir()
 
 		dir := fmt.Sprintf("%s/.dtap/%s", hdir, sessionParam)
@@ -97,7 +97,9 @@ func main() {
 
 	if boxParam == "-" {
 
-		fmt.Printf("read box output from stdin \n")
+		if *verbose {
+			fmt.Printf("read box output from stdin \n")
+		}	
 
 		data, err := io.ReadAll(os.Stdin)
 

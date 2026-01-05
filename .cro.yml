@@ -10,3 +10,4 @@ ignore:
   - go.mod
   - dtap
   - notes.txt
+  - test.sh
