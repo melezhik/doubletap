@@ -46,6 +46,9 @@ sub navbar () is export {
           <a class="navbar-item" href="{http-root()}/examples">
             Examples
           </a>
+          <a class="navbar-item" href="{http-root()}/install">
+            Install
+          </a>
           <a class="navbar-item" href="{http-root()}/bash">
             Bash
           </a>

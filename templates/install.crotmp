@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <&HTML-AND-JAVASCRIPT(.css)>
+    <title>Double TAP - Text and Test Anything Protocol</title>
+  </head>
+  <body>
+    <&HTML-AND-JAVASCRIPT(.navbar)>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">Install DTAP</p>
+        <hr>
+        <p class="markdown-body" id="data"><.data></p>
+      </div>
+    </section>
+</body>
+</html>
+
+<script type="text/javascript">
+  ;(() => {
+    const str = document.getElementById("data").textContent;
+    var p = document.getElementById("data");
+    const div = document.createElement('div');
+    //div.className = 'markdown-body';
+    p.innerHTML = markdown.default(str)
+    //document.body.appendChild(div)
+  })()
+</script>

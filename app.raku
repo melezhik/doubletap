@@ -30,6 +30,14 @@ my $application = route {
     )
   }
 
+  get -> 'install', {
+    template 'templates/install.crotmp', %( 
+      css => css(), 
+      navbar => navbar(),
+      data => "install.md".IO.slurp, 
+    )
+  }
+
   #
   # API methods
   #
