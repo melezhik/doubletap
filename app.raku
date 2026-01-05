@@ -11,6 +11,7 @@ my $application = route {
     template 'templates/main.crotmp', %( 
       css => css(), 
       navbar => navbar(), 
+      data => "main.md".IO.slurp, 
     )
   }
 
