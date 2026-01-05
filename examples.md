@@ -39,10 +39,6 @@ curl http://httpbin.org -D - -s -o /deb/null | head -n 6
 
 Check if redis protected by authentication
 
-## box_id
-
-redis-auth
-
 ## check_id
 
 redis-auth-ok
@@ -92,10 +88,6 @@ mail   IN  A      172.20.0.102 ; mail server definition
 ```
 
 We can check such a configuration with following check rule
-
-## box_id
-
-dns-setup
 
 ## check_id
 

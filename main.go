@@ -44,6 +44,7 @@ func main() {
 	report := flag.Bool("report", false, "show report")
 	details := flag.Bool("details", false, "show report details")
 	failures := flag.Bool("failures", false, "show only failed reports")
+	check_list := flag.Bool("check_list", false, "list available checks")
 
 	flag.Parse()
 
@@ -56,6 +57,35 @@ func main() {
 	descParam := *desc
 	detailsParam := *details
 	failuresParam := *failures
+	check_listParam := *check_list
+
+	if check_listParam == true {
+
+		url := fmt.Sprintf("%s/api/checks", apiParam)
+
+		resp, err := http.Get(url)
+
+		if err != nil {
+			log.Fatalf("Error making HTTP request: %s\n", err)
+		}
+	
+		// Crucial: close the response body to prevent resource leaks
+		// Defer ensures this runs after the surrounding function returns
+		defer resp.Body.Close()
+	
+		// Check the response status code (optional, but recommended)
+		if resp.StatusCode != http.StatusOK {
+			log.Fatalf("Unexpected status code: %d %s\n", resp.StatusCode, resp.Status)
+		}
+	
+		// Read the response body
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatalf("Error reading response body: %s\n", err)
+		}	
+		fmt.Printf("Checks\n======\n%s", string(body))
+		return
+	}
 
 	if reportParam == true && sessionParam != "" {
 

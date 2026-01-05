@@ -30,6 +30,22 @@ my $application = route {
     )
   }
 
+  #
+  # API methods
+  #
+
+  get -> 'api', 'checks', {
+
+    my @checks;
+
+    for dir("checks/") -> $c {
+      push @checks, $c.IO.basename;
+    }
+
+    content "text/plain", @checks.join("\n") ~ "\n";
+
+  }
+
   post -> 'api', {
     request-body -> %json {
       content 'application/json', %json;
@@ -69,6 +85,10 @@ my $application = route {
       }
     }
   }
+
+  #
+  # End of API methods
+  #
 
   #
   # Static files methods

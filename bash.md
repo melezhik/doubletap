@@ -51,3 +51,10 @@ stdout match <Server: gunicorn> True
 TASK CHECK FAIL
 2
 ```
+
+To list available checks:
+
+
+```bash
+dtap  --check_list
+```
