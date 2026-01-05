@@ -16,6 +16,7 @@
           text rules describing system behavior in black box manner.
         </p>
         <p class="control">
+          <br>
           Following a simple example for http web server. <hr>Double TAP code:
           <pre>
 HTTP/1.1 200 OK
@@ -34,8 +35,9 @@ Server: gunicorn/19.9.0</pre>
 stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
-          Double TAP checks are executed via API, for previous example:
-          check is named web-server-ok:
+          Imaging we have uploaded the previous check and uploaded it
+          to some server under name web-server-ok, now
+          we can run the check using API call:
           <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head | dtap --box - --check web-server-ok --params fashion=gunicorn</code></pre>
           API reply:
           <pre><code class="language-json">{
@@ -45,7 +47,8 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
         </p>
         <p class="control">
     <hr>
-    Predefined boxes allow to reuse implementations for some standard checks like checking if packages are installed, services are enabled and web servers work correctly, etc. 
+    Boxes could be predefined, allow to reuse implementations for some standard cases like checking if packages are installed, services are enabled and web servers work correctly, etc. 
+    <br>
     The previous example could be rewritten in equivalent form:
           <pre><code class="language-bash">dtap --box web-server --check web-server-ok --params site=http://httpbin.org,fashion=gunicorn</code></pre>
         </p>
