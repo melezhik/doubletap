@@ -97,7 +97,10 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
             <span class="tag is-black">TDD/BDD embedded</span>
             <hr> 
             Check rules are blueprint, rough specification of system behavior. So we not just write test,
-             we describe the system before it's even implemented. Think cucumber tool but with focus on messages.
+            we describe the system before it's even implemented. Think cucumber tool but with focus on messages.
+            <hr>
+            To list all available checks:
+            <pre><code class="language-bash">dtap  --check_list</code></pre>
           </li>
           <li>
             <br>            

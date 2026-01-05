@@ -34,7 +34,7 @@ func main() {
 	params := flag.String("params", "", "params")
 	session := flag.String("session", "", "session id")
 	desc := flag.String("desc", "check", "check desc")
-	api := flag.String("api", "http://127.0.0.1:9191", "api url")
+	api := flag.String("api", "", "api url")
 
 	// times (int, default 1, usage "number of times to greet")
 	//times := flag.Int("times", 1, "number of times to greet")
@@ -59,6 +59,14 @@ func main() {
 	failuresParam := *failures
 	check_listParam := *check_list
 
+	if apiParam == "" {
+		val, ok := os.LookupEnv("DT_API")
+		if ok {
+			apiParam = val
+		} else {
+			apiParam = "http://127.0.0.1:9191"
+		}
+	}
 	if check_listParam == true {
 
 		url := fmt.Sprintf("%s/api/checks", apiParam)
@@ -73,7 +81,6 @@ func main() {
 		// Defer ensures this runs after the surrounding function returns
 		defer resp.Body.Close()
 	
-		// Check the response status code (optional, but recommended)
 		if resp.StatusCode != http.StatusOK {
 			log.Fatalf("Unexpected status code: %d %s\n", resp.StatusCode, resp.Status)
 		}
@@ -197,6 +204,10 @@ func main() {
 	}
 
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		log.Fatalf("Unexpected status code: %d %s\n", resp.StatusCode, resp.Status)
+	}
 
 	body, _ := io.ReadAll(resp.Body)
 

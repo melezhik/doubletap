@@ -81,7 +81,13 @@ my $application = route {
         );
         content 'application/json', %res; 
       } else {
-        not-found();
+        my %res = %( 
+          status => "FAIL", 
+          report => "check not found",
+          check => $check_id,
+          desc => $desc,
+        );
+        content 'application/json', %res; 
       }
     }
   }
