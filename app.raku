@@ -14,11 +14,11 @@ my $application = route {
     )
   }
 
-  get -> 'boxes', {
-    template 'templates/boxes.crotmp', %( 
+  get -> 'examples', {
+    template 'templates/examples.crotmp', %( 
       css => css(), 
       navbar => navbar(),
-      examples => "boxes.md".IO.slurp, 
+      examples => "examples.md".IO.slurp, 
     )
   }
 

@@ -51,7 +51,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
         </p>
         <p class="control">
     <hr>
-    Check some <a href="/boxes">examples</a> here.
+    Check some <a href="/examples">examples</a> here.
     Or read <a href="https://git.resf.org/testing/sparrow_task_check_crash_course">quick start</a> of double TAP rules language.
         </p>
         <hr>
