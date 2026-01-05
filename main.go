@@ -6,25 +6,25 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"time"
-	"io/ioutil"
 	"path/filepath"
+	"time"
 )
 
 type Check struct {
 	Data    string `json:"data"`
 	CheckId string `json:"check_id"`
-	Desc string `json:"desc"`
+	Desc    string `json:"desc"`
 	Params  string `json:"params"`
 }
 
 type CheckResult struct {
 	Status string `json:"status"`
 	Report string `json:"report"`
-	Desc string `json:"desc"`
+	Desc   string `json:"desc"`
 }
 
 func main() {
@@ -42,6 +42,8 @@ func main() {
 
 	verbose := flag.Bool("verbose", false, "verbose mode")
 	report := flag.Bool("report", false, "show report")
+	details := flag.Bool("details", false, "show report details")
+	failures := flag.Bool("failures", false, "show only failed reports")
 
 	flag.Parse()
 
@@ -52,18 +54,22 @@ func main() {
 	sessionParam := *session
 	reportParam := *report
 	descParam := *desc
+	detailsParam := *details
+	failuresParam := *failures
 
 	if reportParam == true && sessionParam != "" {
 
-		fmt.Printf("DTAP report\nsession: %s\n===\n",sessionParam);
+		fmt.Printf("DTAP report\nsession: %s\n===\n", sessionParam)
 		hdir, err := os.UserHomeDir()
 
 		dir := fmt.Sprintf("%s/.dtap/%s", hdir, sessionParam)
 
 		files, err := ioutil.ReadDir(dir)
-    	if err != nil {
-        	log.Fatal(err)
-    	}
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dtap_status := true
 
 		for _, file := range files {
 			path := filepath.Join(dir, file.Name())
@@ -78,10 +84,22 @@ func main() {
 			if err != nil {
 				log.Fatalf("error unmarshalling: %v", err)
 			}
-			fmt.Printf("%s ...... %s\n",r.Desc,r.Status)
+			if r.Status != "OK" {
+				dtap_status = false
+			}
+			if failuresParam == true && r.Status == "OK" {
+				continue
+			}
+			fmt.Printf("%s ...... %s\n", r.Desc, r.Status)
+			if detailsParam == true {
+				fmt.Printf("[report]\n%s\n", r.Report)
+			}
 		}
 
-		return;
+		if dtap_status == false {
+			os.Exit(1)
+		}
+		return
 	}
 
 	if *verbose {
@@ -99,7 +117,7 @@ func main() {
 
 		if *verbose {
 			fmt.Printf("read box output from stdin \n")
-		}	
+		}
 
 		data, err := io.ReadAll(os.Stdin)
 
@@ -111,7 +129,7 @@ func main() {
 			Data:    string(data),
 			CheckId: checkParam,
 			Params:  paramsParam,
-			Desc: descParam,
+			Desc:    descParam,
 		}
 
 	}
@@ -168,7 +186,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error creating directory:", err)
 		}
-		file := fmt.Sprintf("%s/%d.json",dir, report_id)
+		file := fmt.Sprintf("%s/%d.json", dir, report_id)
 		err = os.WriteFile(file, body, 0644)
 		if err != nil {
 			log.Fatal(err)
