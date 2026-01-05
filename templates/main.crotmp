@@ -49,7 +49,7 @@ stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
     <hr>
     Boxes could be predefined, allow to reuse implementations for some standard cases like checking if packages are installed, services are enabled and web servers work correctly, etc. 
     <br>
-    The previous example could be rewritten in equivalent form:
+    The previous example could be rewritten with using web-server box (which under the hood executes curl call):
           <pre><code class="language-bash">dtap --box web-server --check web-server-ok --params site=http://httpbin.org,fashion=gunicorn</code></pre>
         </p>
         <p class="control">
