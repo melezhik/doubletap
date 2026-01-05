@@ -17,11 +17,11 @@
         </p>
         <p class="control">
           <br>
-          Following a simple example for http web server. <hr>Double TAP code:
+          Following a simple example for http web server. <hr>Check rule code:
           <pre>
 HTTP/1.1 200 OK
 Server: gunicorn/19.9.0</pre>
-          Implementation code (the one producing output):
+          Implementation code aka box (the one producing output):
           <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head</code></pre>
           Test report:
           <pre>[task stdout]
@@ -35,8 +35,8 @@ Server: gunicorn/19.9.0</pre>
 stdout match &lt;HTTP/1.1 200 OK&gt; True
 stdout match &lt;Server: gunicorn/19.9.0&gt; True</pre>
           <hr>
-          Imaging we have uploaded the previous check and uploaded it
-          to some server under name web-server-ok, now
+          Imaging we have saved the previous check into file and uploaded it
+          to some server (performing checks) under name web-server-ok, now
           we can run the check using API call:
           <pre><code class="language-bash">curl http://httpbin.org -D - -s -o /deb/null | head | dtap --box - --check web-server-ok --params fashion=gunicorn</code></pre>
           API reply:
