@@ -52,6 +52,9 @@ sub navbar () is export {
           <a class="navbar-item" href="{http-root()}/bash">
             Bash
           </a>
+          <a class="navbar-item" href="https://github.com/melezhik/doubletap">
+            Source
+          </a>
         </div>
       </div>
     </nav>
