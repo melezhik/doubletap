@@ -1,0 +1,7 @@
+begin:
+generator: <<pack
+!bash
+echo "regexp: ^^ 'Package:' \\s+ '"$(config package)"' \$\$"
+pack
+Status: install ok installed
+end:
