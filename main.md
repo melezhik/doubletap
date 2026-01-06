@@ -71,7 +71,13 @@ dtap --box http-client \
 
 ---
 
-Check some *[examples](/examples)* here. Or read *[quick start](https://git.resf.org/testing/sparrow_task_check_crash_course)* of double TAP rules language.
+## Further reading
+
+* See some *[check](/checks)* examples
+
+* Or *[box](/boxes)* examples
+
+* Or read double TAP rules language *[quick start](https://git.resf.org/testing/sparrow_task_check_crash_course)*
 
 
 # Protocol features

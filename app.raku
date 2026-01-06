@@ -15,11 +15,19 @@ my $application = route {
     )
   }
 
-  get -> 'examples', {
-    template 'templates/examples.crotmp', %( 
+  get -> 'checks', {
+    template 'templates/checks.crotmp', %( 
       css => css(), 
       navbar => navbar(),
-      data => "examples.md".IO.slurp, 
+      data => "checks.md".IO.slurp, 
+    )
+  }
+
+  get -> 'boxes', {
+    template 'templates/boxes.crotmp', %( 
+      css => css(), 
+      navbar => navbar(),
+      data => "boxes.md".IO.slurp, 
     )
   }
 

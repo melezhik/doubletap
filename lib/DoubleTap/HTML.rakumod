@@ -43,8 +43,11 @@ sub navbar () is export {
           <a class="navbar-item" href="{http-root()}/">
             Home
           </a>
-          <a class="navbar-item" href="{http-root()}/examples">
-            Examples
+          <a class="navbar-item" href="{http-root()}/checks">
+            Checks
+          </a>
+          <a class="navbar-item" href="{http-root()}/boxes">
+            Boxes
           </a>
           <a class="navbar-item" href="{http-root()}/install">
             Install
