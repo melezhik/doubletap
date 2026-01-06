@@ -2,12 +2,14 @@
 #!/bin/bash
 
 export DT_API=http://doubletap.sparrowhub.io
+export PATH=$PWD:$PATH
 
 session=$(date +%s)
 
 echo OK | dtap --check echo --params word=OK  --box - --session $session --desc "echo test"
 
-curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | dtap --box - --session $session --check web-server-ok --params fashion=gunicorn --desc "web server"
+curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | \
+dtap --box - --session $session --check web-server-ok --params fashion=gunicorn --desc "web server"
 
 dtap  --report  --session $session
 
