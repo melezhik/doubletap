@@ -11,3 +11,5 @@ ignore:
   - dtap
   - notes.txt
   - test.sh
+  - boxes/
+  - boxes.go

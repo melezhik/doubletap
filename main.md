@@ -60,13 +60,13 @@ API reply:
 
 Boxes could be predefined, allow to reuse implementations for some standard cases like checking if packages are installed, services are enabled and web servers work correctly, etc.
 
-The previous example could be rewritten with using web-server box (which under the hood executes curl call):
+The previous example could be rewritten with using `http-client` box (which under the hood executes curl call):
 
 ```
 #!/bin/bash
-dtap --box web-server \
+dtap --box http-client \
 --check web-server-ok \
---params site=http://httpbin.org,fashion=gunicorn
+--params host=http://httpbin.org,fashion=gunicorn
 ```
 
 ---

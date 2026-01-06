@@ -45,6 +45,7 @@ func main() {
 	details := flag.Bool("details", false, "show report details")
 	failures := flag.Bool("failures", false, "show only failed reports")
 	check_list := flag.Bool("check_list", false, "list available checks")
+	box_list := flag.Bool("box_list", false, "list available boxes")
 
 	flag.Parse()
 
@@ -58,6 +59,7 @@ func main() {
 	detailsParam := *details
 	failuresParam := *failures
 	check_listParam := *check_list
+	box_listParam := *box_list
 
 	if apiParam == "" {
 		val, ok := os.LookupEnv("DT_API")
@@ -76,21 +78,31 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error making HTTP request: %s\n", err)
 		}
-	
+
 		// Crucial: close the response body to prevent resource leaks
 		// Defer ensures this runs after the surrounding function returns
 		defer resp.Body.Close()
-	
+
 		if resp.StatusCode != http.StatusOK {
 			log.Fatalf("Unexpected status code: %d %s\n", resp.StatusCode, resp.Status)
 		}
-	
+
 		// Read the response body
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			log.Fatalf("Error reading response body: %s\n", err)
-		}	
+		}
 		fmt.Printf("Checks\n======\n%s", string(body))
+		return
+	}
+
+	if box_listParam == true {
+
+		fmt.Printf("Boxes\n======\n")
+		for _, b := range BoxList() {
+			fmt.Printf("%s", b)
+		}
+		fmt.Printf("\n")
 		return
 	}
 
@@ -169,6 +181,21 @@ func main() {
 			Desc:    descParam,
 		}
 
+	} else {
+
+		if *verbose {
+			fmt.Printf("execute box: %s with params: %s\n", boxParam, paramsParam)
+		}
+
+		out := RunBox(boxParam, paramsParam)
+
+		check_data = Check{
+			Data:    out,
+			CheckId: checkParam,
+			Params:  paramsParam,
+			Desc:    descParam,
+		}
+
 	}
 
 	jsonData, err := json.Marshal(check_data)
@@ -214,6 +241,7 @@ func main() {
 	var r CheckResult
 
 	err = json.Unmarshal(body, &r)
+
 	if err != nil {
 		log.Fatalf("error unmarshalling: %v", err)
 	}
@@ -233,7 +261,7 @@ func main() {
 			log.Fatal(err)
 		}
 	} else {
-		fmt.Println("%s", string(r.Report))
+		fmt.Printf("%s\n", string(r.Report))
 	}
 
 	//fmt.Println("response Status:", resp.Status)
