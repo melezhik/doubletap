@@ -37,6 +37,7 @@ echo test ........ OK
 templates dir .... OK
 web server ....... FAIL
 nano package ..... OK
+
 DTAP report
 session: 1767605425
 ===
