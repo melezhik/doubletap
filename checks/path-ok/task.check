@@ -1,0 +1,4 @@
+generator: <<OK
+!bash
+echo "regexp: ^^ \"$(config path)\"  \$\$"
+OK

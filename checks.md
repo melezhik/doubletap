@@ -188,17 +188,20 @@ sudo cat /var/log/auth.log
 
 ## check_id
 
-directory-exists
+path-ok
 
 ## check rule
 
 ```
-regexp: ^^ .*  \/ $$
+generator: <<OK
+!bash
+echo "regexp: ^^ \"$(config path)\"  \$\$"
+OK
 ```
 
 ## box implementation example
 
 ```
-ls -1d foo/ 2>&1
+ls foo/ 2>&1
 ```
 
