@@ -7,6 +7,11 @@ session=$(date +%s)
 
 echo OK | dtap --check echo --params word=OK  --box - --session $session --desc "echo test"
 
+ls -1d templates/ 2>&1 | dtap --box - \
+--session $session \
+--check directory-exists \
+--desc "templates dir"
+
 curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | \
 dtap --box - --session $session --check web-server-ok --params fashion=gunicorn --desc "web server"
 
@@ -28,9 +33,10 @@ Output:
 DTAP report
 session: 1767605425
 ===
-echo test ...... OK
-web server ...... FAIL
-nano package ... OK
+echo test ........ OK
+templates dir .... OK
+web server ....... FAIL
+nano package ...... OK
 DTAP report
 session: 1767605425
 ===
