@@ -24,7 +24,7 @@ dtap --box - \
 --params fashion=gunicorn \
 --desc "web server"
 
-dpkg -s nano 2>&1|head -n2 | \
+dpkg -s nano 2>&1 | head -n2 | \
 dtap --box - \
 --session $session \
 --check package-install-ok \
