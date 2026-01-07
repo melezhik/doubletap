@@ -56,7 +56,7 @@ NOAUTH Authentication required
 ## box implementation example
 
 ```
-redis-cli ping 2>&1 || :
+redis-cli ping 2>&1
 ```
 
 # domain name server

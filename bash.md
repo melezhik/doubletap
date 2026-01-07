@@ -12,9 +12,10 @@ echo OK | dtap \
 --session $session \
 --desc "echo test"
 
-ls -1d templates/ 2>&1 | dtap --box - \
+ls -d templates/ 2>&1 | dtap --box - \
 --session $session \
---check directory-exists \
+--check path-ok \
+--params path=templates/ \
 --desc "templates dir"
 
 curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | \
