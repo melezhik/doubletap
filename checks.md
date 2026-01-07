@@ -185,3 +185,20 @@ stat
 ```
 sudo cat /var/log/auth.log
 ```
+
+## check_id
+
+directory-exists
+
+## check rule
+
+```
+regexp: ^^ .*  \/ $$
+```
+
+## box implementation example
+
+```
+ls -1d foo/ 2>&1
+```
+

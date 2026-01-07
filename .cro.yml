@@ -13,3 +13,5 @@ ignore:
   - test.sh
   - boxes/
   - boxes.go
+  - checks/
+  - examples/
