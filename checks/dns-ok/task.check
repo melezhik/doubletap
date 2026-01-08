@@ -3,7 +3,7 @@ Using domain server:
 generator: <<ok
 !bash
 echo "regexp: ^^ 'Name: $(config dns_host)' \$\$"
-echo "regexp: ^^ 'Address: $(config dns_host)#$(config dns_port)' \$\$"
+echo "regexp: ^^ 'Address: $(config dns_host)' \c[NUMBER SIGN] $(config dns_port)' \$\$"
 ok
 Aliases: 
 regexp: ^^ $$
