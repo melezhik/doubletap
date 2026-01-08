@@ -79,6 +79,8 @@ dtap --box http-client \
 
 * *[Boxes](/boxes)*
 
+* *[DTAP DSL Comprehensive Documentation](https://github.com/melezhik/Sparrow6/blob/master/documentation/taskchecks.md)*
+
 * *[DTAP DSL Quick Start](https://git.resf.org/testing/sparrow_task_check_crash_course)*
 
 
