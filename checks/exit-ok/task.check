@@ -1,0 +1,15 @@
+:any:
+
+generator: <<ok
+!raku
+
+if matched() {
+  say "assert: ",True, " exit code found";
+  my $ll = matched().tail;
+  say "note: exit code: $ll";
+  say "assert: ",($ll eq "0"), " exit code == 0";
+
+} else {
+  say "assert: ",False, " exit code found";
+}
+ok

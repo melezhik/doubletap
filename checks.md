@@ -2,10 +2,6 @@
 
 Check if a text contains a string
 
-## check_id
-
-echo
-
 ## params 
 
 word
@@ -16,14 +12,10 @@ word
 echo "hello world"
 ```
 
-# web server
+# web-server-ok
 
 Check if a web server returns 200 OK, and
-has a specific web server flavour
-
-## check_id
-
-web-server-ok
+has a specific web server flavor
 
 ## params 
 
@@ -35,13 +27,9 @@ fashion
 curl http://httpbin.org -D - -s -o /deb/null | head -n 6
 ```
 
-# redis authentication 
+# redis-auth-ok
 
 Check if redis protected by authentication
-
-## check_id
-
-redis-auth-ok
 
 ## params 
 
@@ -59,11 +47,10 @@ NOAUTH Authentication required
 redis-cli ping 2>&1
 ```
 
-# domain name server
+# dns-setup-ok
 
-Check that domain server works correctly,
-by queering dns entries and checking
-systemd status.
+Check that domain server works correctly, 
+by queering dns entries and checking systemd status.
 
 For example, if following DNS configuration is set:
 
@@ -87,11 +74,7 @@ www    IN  A      172.20.0.101 ; web server definition
 mail   IN  A      172.20.0.102 ; mail server definition
 ```
 
-We can check such a configuration with following check rule
-
-## check_id
-
-dns-setup-ok
+We can check such a configuration with this check rule
 
 ## params 
 
@@ -100,39 +83,6 @@ dns-setup-ok
 - name_server_ip
 - web_server_ip
 - mail_server_ip
-
-## check rule
-
-```
-note: Check that service is enabled and active
-begin:
-    # server should be enabled
-    enabled
-    # server should be active
-    active
-end:
-
-note: Check DNS resolution using host command
-begin:
-    Using domain server:
-    Name: 127.0.0.1
-    Address: 127.0.0.1
-    Aliases:
-    regexp: ^^  $$
-    example.com has address 172.20.0.100
-    example.com mail is handled by 10 mail.another.com.
-end:
-
-
-note: Check individual records using dig command
-begin:
-    172.20.0.100
-    172.20.0.100
-    172.20.0.101
-    172.20.0.102
-    10 mail.another.com.
-end:
-```
 
 ## box implementation example
 
@@ -152,56 +102,19 @@ dig a @127.0.0.1 +short mail.example.com
 dig mx @127.0.0.1 +short example.com
 ```
 
-# ssh login attempts
-
-Find unsuccessful login attempts and return
-all found logins.
-
-## box_id
-
-ssh-log
-
-## check_id
-
-ssh-login-attempt
-
-## check rule
-
-```
-~regexp: "Failed password for" \s+ (\S+) \s+ from
-
-code: <<stat
-!raku
-my @data;
-for captures()<> -> $i {
-   push @data, $i.head;
-}
-update_state(%( data => $data ));
-stat
-```
-
-## box implementation example
-
-```
-sudo cat /var/log/auth.log
-```
-
-## check_id
-
-path-ok
-
-## check rule
-
-```
-generator: <<OK
-!bash
-echo "regexp: ^^ \"$(config path)\"  \$\$"
-OK
-```
+# path-ok
 
 ## box implementation example
 
 ```
 ls foo/ 2>&1
+```
+
+# exit-ok
+
+## box implementation example
+
+```
+(stupid-command 2>&1; echo $?)
 ```
 
