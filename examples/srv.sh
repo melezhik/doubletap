@@ -8,7 +8,7 @@ sudo systemctl is-enabled knot 2>&1 | dtap --box - \
 
 sudo systemctl is-active knot 2>&1 | dtap --box - \
 --session $session \
---check srv-enabled \
+--check srv-active \
 --desc "knot srv active"
 
 dtap  --report  --session $session
