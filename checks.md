@@ -94,3 +94,17 @@ Check that service is enabled
 ```
 sudo systemctl is-enabled knot 2>&1
 ```
+
+# dns-ok
+
+Check that dns server has host entry
+
+## params
+
+`dns_host=string,dns_port=int,host=string,ip=string`
+
+## box implementation example
+
+```
+host example.com 127.0.0.1 2>&1
+```

@@ -1,15 +1,14 @@
 begin:
 Using domain server:
-Name: 127.0.0.1
 generator: <<ok
 !bash
-echo "Name: $(config dns_host)"
-echo "Address: $(config dns_host)#$(config dns_port)"
+echo "regexp: ^^ 'Name: $(config dns_host)' \$\$"
+echo "regexp: ^^ 'Address: $(config dns_host)#$(config dns_port)' \$\$"
 ok
 Aliases: 
 regexp: ^^ $$
 generator: <<ok
 !bash
-echo "$(config host) has address $(config ip)"
+echo "regexp: ^^ '$(config host) has address $(config ip)' \$\$"
 ok
 end:
