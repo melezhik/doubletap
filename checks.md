@@ -35,12 +35,6 @@ Check if redis protected by authentication
 
 redis_url
 
-## check rule
-
-```
-NOAUTH Authentication required
-```
-
 ## box implementation example
 
 ```
