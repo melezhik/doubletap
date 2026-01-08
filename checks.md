@@ -104,6 +104,8 @@ dig mx @127.0.0.1 +short example.com
 
 # path-ok
 
+Check that file or directory exists
+
 ## box implementation example
 
 ```
@@ -111,6 +113,8 @@ ls foo/ 2>&1
 ```
 
 # exit-ok
+
+Check that command succeeds
 
 ## box implementation example
 
