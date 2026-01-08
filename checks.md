@@ -12,6 +12,20 @@ word
 echo "hello world"
 ```
 
+# package-install-ok
+
+Check if package is installed
+
+## params
+
+package
+
+## box implimentation example
+
+```
+dpkg -s nano 2>&1|head -n2
+``` 
+
 # web-server-ok
 
 Check if a web server returns 200 OK, and
