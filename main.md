@@ -73,11 +73,13 @@ dtap --box http-client \
 
 ## Further reading
 
-* See some *[check](/checks)* examples
+* *[Examples](https://github.com/melezhik/doubletap/tree/main/examples)*
 
-* Or *[box](/boxes)* examples
+* *[Checks](/checks)*
 
-* Or read double TAP rules language *[quick start](https://git.resf.org/testing/sparrow_task_check_crash_course)*
+* *[Boxes](/boxes)*
+
+* *[DTAP DSL Quick Start](https://git.resf.org/testing/sparrow_task_check_crash_course)*
 
 
 # Protocol features
