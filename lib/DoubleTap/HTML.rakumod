@@ -14,6 +14,7 @@ sub css () is export {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex\@0.15.0/dist/katex.min.css">
   <link rel="stylesheet" href="https://unpkg.com/\@wcj/markdown-to-html/dist/marked.css">
+  <link href="/css/main.css" rel='stylesheet'>
   <script src="https://unpkg.com/\@wcj/markdown-to-html/dist/markdown.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/perl.min.js"></script>
