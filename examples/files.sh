@@ -19,6 +19,13 @@ ls README.md 2>&1 \
 --check path-ok \
 --desc "readme file"
 
+stat -f %A README.md 2>&1 \
+| dtap --box - \
+--session $session \
+--params perm=755 \
+--check perm-ok \
+--desc "readme perm 644"
+
 ls foo.md 2>&1 \
 | dtap --box - \
 --session $session \

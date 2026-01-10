@@ -1,0 +1,15 @@
+within: :0:
+  regexp: ^^ (\d+) $$
+end:
+
+generator: <<ok
+!raku
+if matched() {
+  say "assert: ",True, " permission attribute found";
+  my $p = capture().head;
+  say "note: perm found is $p";
+  say "assert: ",($p eq config()<perm>), " permission $p == {config()<perm>}";
+} else {
+  say "assert: ",False, " permission attribute found";
+}
+ok

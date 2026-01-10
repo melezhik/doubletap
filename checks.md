@@ -108,3 +108,23 @@ Check that dns server has host entry
 ```
 host example.com 127.0.0.1 2>&1
 ```
+
+# perm-ok
+
+Check directory/file permission
+
+## params
+
+`perm=int`
+
+## box implementation example
+
+```
+# Mac OS
+
+stat -f %A README.md 2>&1
+
+# Linux
+stat -c "%a" README.md
+```
+
