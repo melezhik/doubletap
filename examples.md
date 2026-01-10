@@ -1,4 +1,4 @@
-# web server check
+# web server checks
 
 ```bash
 curl http://httpbin.org/foo -D - -s -o /dev/null | head -n 10  | \
@@ -10,7 +10,7 @@ dtap \
 --desc "web server"
 ```
 
-# package install check
+# package is installed check
 
 ```bash
 dpkg -s nano 2>&1|head -n2 | \
@@ -22,7 +22,7 @@ dtap \
 --desc "nano package"
 ```
 
-# file and directory exists check
+# file/directory exists
 
 ```bash
 ls -1d templates/ 2>&1 | dtap --box - \
@@ -38,6 +38,21 @@ ls README.md 2>&1 \
 --check path-ok \
 --desc "readme file"
 ```
+
+# file/directory permissions
+
+MacOS
+
+```bash
+stat -f %A README.md 2>&1 \
+| dtap --box - \
+--session $session \
+--params perm=755 \
+--check perm-ok \
+--desc "readme perm 644"
+```
+
+On Linux just use `stat -c "%a"`
 
 # service enabled and running
 
