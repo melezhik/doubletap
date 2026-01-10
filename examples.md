@@ -49,7 +49,7 @@ stat -f %A README.md 2>&1 \
 --session $session \
 --params perm=755 \
 --check perm-ok \
---desc "readme perm 644"
+--desc "readme perm 755"
 ```
 
 On Linux just use `stat -c "%a"`
