@@ -16,21 +16,21 @@ ls -d templates/ 2>&1 | dtap --box - \
 --session $session \
 --check path-ok \
 --params path=templates/ \
---desc "templates dir"
+--desc "templates dir exists"
 
 curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | \
 dtap --box - \
 --session $session \
 --check web-server-ok \
 --params fashion=gunicorn \
---desc "web server"
+--desc "web server http ok"
 
 dpkg -s nano 2>&1 | head -n2 | \
 dtap --box - \
 --session $session \
 --check package-install-ok \
 --params package=nano \
---desc "nano package"
+--desc "nano package installed"
 
 dtap  --report  --session $session
 
@@ -51,15 +51,15 @@ Output:
 DTAP report
 session: 1767605425
 ===
-echo test ........ OK
-templates dir .... OK
-web server ....... FAIL
-nano package ..... OK
+echo test              ........ OK
+templates dir exists   ........ OK
+web server http ok     ........ FAIL
+nano package installed ........ OK
 
 DTAP report
 session: 1767605425
 ===
-web server ...... FAIL
+web server http ok ...... FAIL
 [report]
 12:30:28 :: [sparrowtask] - run sparrow task .@fashion=gunicorn
 12:30:28 :: [sparrowtask] - run [.], thing: .@fashion=gunicorn
