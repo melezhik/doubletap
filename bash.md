@@ -18,7 +18,7 @@ ls -d templates/ 2>&1 | dtap --box - \
 --params path=templates/ \
 --desc "templates dir exists"
 
-curl http://httpbin.org/foo -D - -s -o /deb/null | head -n 10  | \
+curl http://httpbin.org/foo -D - -s -o /dev/null | head -n 10  | \
 dtap --box - \
 --session $session \
 --check web-server-ok \
