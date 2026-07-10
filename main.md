@@ -19,7 +19,7 @@ Implementation code aka box (the one producing output):
 
 ```
 #!/bin/bash
-curl http://httpbin.org -D - -s -o /deb/null | head
+curl http://httpbin.org -D - -s -o /dev/null | head
 ```
 
 Test report:
@@ -43,7 +43,7 @@ Imaging we have saved the previous check into file and uploaded it to some serve
 
 ```
 #!/bin/bash
-curl http://httpbin.org -D - -s -o /deb/null | head | \
+curl http://httpbin.org -D - -s -o /dev/null | head | \
 dtap --box - --check web-server-ok --params fashion=gunicorn
 ```
 
