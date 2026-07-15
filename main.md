@@ -58,7 +58,7 @@ API reply:
 
 ---
 
-Boxes could be predefined, allow to reuse implementations for some standard cases like checking if packages are installed, services are enabled and web servers work correctly, etc.
+Boxes - are abstractions for anything that produces some text output. Check rules are executed on dedicated server ( http://127.0.0.1:9191 by default ) against the output and test reports are send back to client. Boxes could be predefined and comes with dtap distrbtion or could be written un in place as simple bash commands ( `--box -` notation ), allow to implement standard cases like running package manager commands, make http client calls or just ps aux to grep proccess list. So for terminology funs, boxes are producers, check rules are applied to data pruduced by on dedicated server which is a consumer and results are sent back.
 
 The previous example could be rewritten with using `http-client` box (which under the hood executes curl call):
 
