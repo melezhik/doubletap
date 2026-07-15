@@ -1,11 +1,22 @@
 # Install from source code
 
+
+## Server
+
+```bash
+git clone https://github.com/melezhik/doubletap.git
+cd doubletap/server
+go build .
+./dtap_server
+```
+
+## Client
+
 ```bash
 git clone https://github.com/melezhik/doubletap.git
 cd doubletap
 go build .
 export PATH=$PWD:$PATH
-export DT_API=http://doubletap.sparrowhub.io
 ```
 
 ## Check that dtap cli works

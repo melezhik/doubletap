@@ -22,7 +22,7 @@ type Check struct {
 }
 
 type CheckResult struct {
-	Status string `json:"status"`
+	Status bool `json:"status"`
 	Report string `json:"report"`
 	Desc   string `json:"desc"`
 }
@@ -133,13 +133,22 @@ func main() {
 			if err != nil {
 				log.Fatalf("error unmarshalling: %v", err)
 			}
-			if r.Status != "OK" {
+			if r.Status == false {
 				dtap_status = false
 			}
-			if failuresParam == true && r.Status == "OK" {
+			if failuresParam == true && r.Status == true {
 				continue
 			}
-			fmt.Printf("%s ...... %s\n", r.Desc, r.Status)
+
+      status := ""
+
+      if r.Status == true {
+        status = "OK"
+      } else {
+        status = "FAIL"
+      }
+
+			fmt.Printf("%s ...... %s\n", r.Desc, status)
 			if detailsParam == true {
 				fmt.Printf("[report]\n%s\n", r.Report)
 			}

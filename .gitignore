@@ -1,4 +1,5 @@
-.cache/
-.precomp
 main
 dtap
+go.sum
+server/dtap_server
+.cache/
