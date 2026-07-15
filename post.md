@@ -144,7 +144,7 @@ It's easy to create new checks and add them to DTAP distribution, if you are ins
 
 Conclusion.
 
-DTAP is a new kid on the block, that allows to test infrastructure with using just a Bash yet very flexible and powerful. I encourage you to play with it, you can start with [installation](http://doubletap.sparrowhub.io/install) guide
+DTAP is a new kid on the block, that allows to test infrastructure with using just a Bash yet very flexible and powerful. I encourage you to play with it, you can start with [installation](https://github.com/melezhik/doubletap/blob/main/install.md) guide
 
 ---
 
