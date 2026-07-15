@@ -106,14 +106,14 @@ Box is an abstraction for everything we want to test - from web server to messag
   cmd2;
   cmd3;
   # ...
-) | tap --box -
+) | dtap --box -
 ```
 
 Or with a single script:
 
 ```bash
 #!/bin/bash
-. /some/box/script.sh | tap --box -
+. /some/box/script.sh | dtap --box -
 ```
 
 Checks are rules written on formal [DSL](https://github.com/melezhik/Sparrow6/blob/master/documentation/taskchecks.md) and executed remotely on DTAP server, so users don't need to install anything, only small [tap binary](http://doubletap.sparrowhub.io/install) written on golang that interacts with a server send output from boxes to a server and get results back. Checks DSL is based on regular expressions and is super flexible, allowing many things to do including extension by using many general programming languages. 
@@ -133,7 +133,7 @@ OK
 To list available checks just run:
 
 ```bash
-tap --check_list
+dtap --check_list
 ```
 
 Follow double tap web site [documentation](http://doubletap.sparrowhub.io/checks) to get details on using available checks.
