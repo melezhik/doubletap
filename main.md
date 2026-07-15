@@ -58,7 +58,9 @@ API reply:
 
 ---
 
-Boxes - are abstractions for anything that produces some text output. Check rules are executed on dedicated server ( http://127.0.0.1:9191 by default ) against the output and test reports are send back to client. Boxes could be [predefined](https://github.com/melezhik/doubletap/tree/main/boxes) and come with dtap distribution or could be written in place as simple bash commands with output redirectee to dtap client via stdout ( using `--box -` notation ), boxes allow to implement standard cases like running package manager commands, make http client calls or just issuing ps aux to grep proccess list. So for terminology funs, boxes are producers, check rules are applied to data pruduced by on dedicated server which is a a consumer and results are sent back.
+# The concept
+
+Boxes - are abstractions for anything that produces some text output. Check rules are executed on dedicated server ( http://127.0.0.1:9191 by default ) against the output and test reports are send back to client. Boxes could be [predefined](https://github.com/melezhik/doubletap/tree/main/boxes) and come with dtap distribution or could be written in place as simple bash commands with output redirected to dtap client via stdout ( using `--box -` notation ), boxes allow to implement standard cases like running package manager commands, make http client calls or just issuing ps aux to grep proccess list. So for terminology funs, boxes are producers, check rules are applied to data pruduced by on dedicated server which is a a consumer and results are sent back.
 
 The previous example could be rewritten with using `http-client` box (which under the hood executes curl call):
 
