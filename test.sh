@@ -1,7 +1,3 @@
-export PATH=$PWD:$PATH
-
-export DT_API=http://doubletap.sparrowhub.io
-
 session=$(date +%s)
 
 echo OK | dtap \
