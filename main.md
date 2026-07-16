@@ -77,9 +77,9 @@ dtap --box http-client \
 
 * *[Examples](https://github.com/melezhik/doubletap/tree/main/examples)*
 
-* *[Checks](/checks)*
+* *[Checks](/checks.md)*
 
-* *[Boxes](/boxes)*
+* *[Boxes](/boxes.md)*
 
 * *[DTAP DSL Comprehensive Documentation](https://github.com/melezhik/Sparrow6/blob/master/documentation/taskchecks.md)*
 

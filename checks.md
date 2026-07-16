@@ -127,4 +127,3 @@ stat -f %A README.md 2>&1
 # Linux
 stat -c "%a" README.md
 ```
-

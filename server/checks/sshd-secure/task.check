@@ -1,0 +1,5 @@
+note: root login should be not allowed
+permitrootlogin no
+
+note: password auth should be disabled
+passwordauthentication no

@@ -1,6 +1,5 @@
 # Install from source code
 
-
 ## Server
 
 ```bash

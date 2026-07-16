@@ -61,8 +61,16 @@ func main() {
 	check_listParam := *check_list
 	box_listParam := *box_list
 
-	if apiParam == "" {
-		val, ok := os.LookupEnv("DT_API")
+	if sessionParam == "" {
+
+    val, ok := os.LookupEnv("DTAP_SESSION")
+    if ok {
+      sessionParam = val
+    }
+  }
+
+  if apiParam == "" {
+		val, ok := os.LookupEnv("DTAP_API")
 		if ok {
 			apiParam = val
 		} else {
