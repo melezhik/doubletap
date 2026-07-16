@@ -18,6 +18,16 @@ sudo sshd -T | dtap \
 --box - \
 --desc "sshd is secure"
 
+getenforce | dtap \
+--check selinux-enabled \
+--box - \
+--desc "selinux enabled and enforced"
+
+cat /etc/selinux/config  | dtap \
+--check selinux-config-ok \
+--box - \
+--desc "selinux config correct"
+
 dtap --report
 
 ex_code=$?

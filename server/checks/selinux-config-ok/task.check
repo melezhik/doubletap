@@ -1,0 +1,2 @@
+note: SELINUX=enforcing means SELinux security policy is enforced
+regexp: ^^ "SELINUX=enforcing" \s* $$
