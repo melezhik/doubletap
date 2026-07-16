@@ -8,7 +8,7 @@ tags: testing, inspec, infrastructure, devops
 # published_at: 2026-01-08 12:25 +0000
 ---
 
-[DTAP](http://doubletap.sparrowhub.io) is a new testing protocol allowing to test infrastructure with just a Bash scripts. Here is a quick example, let's test that `/etc/dhcp/` directory and `/etc/dhcpcd.conf` file exists:
+[DTAP](https://github.com/melezhik/doubletap) is a new testing protocol allowing to test infrastructure with just a Bash scripts. Here is a quick example, let's test that `/etc/dhcp/` directory and `/etc/dhcpcd.conf` file exists:
 
 
 ```bash
@@ -136,7 +136,7 @@ To list available checks just run:
 dtap --check_list
 ```
 
-Follow double tap web site [documentation](http://doubletap.sparrowhub.io/checks) to get details on using available checks.
+Follow double tap web site [documentation](https://github.com/melezhik/doubletap) to get details on using available checks.
 
 It's easy to create new checks and add them to DTAP distribution, if you are instead please let me know. There is quick start introduction  into check DSL could be found [here](https://git.resf.org/testing/sparrow_task_check_quick_start/src/branch/main)
 
