@@ -1,6 +1,17 @@
 session=$(date +%s)
 
-sudo firewall-cmd --state | dtap \
+sudo systemctl is-enabled firewalld 2>&1 | dtap --box - \
+--session $session \
+--check srv-enabled \
+--desc "firewalld srv enable"
+
+
+sudo systemctl is-active firewalld 2>&1 | dtap --box - \
+--session $session \
+--check srv-active \
+--desc "firewalld srv active"
+
+sudo firewall-cmd --list-all | dtap \
 --check firewall-default-deny \
 --box - \
 --session $session \
