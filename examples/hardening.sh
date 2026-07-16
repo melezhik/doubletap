@@ -29,11 +29,10 @@ cat /etc/selinux/config  | dtap \
 --desc "selinux config correct"
 
 
-rpm -q lynis  2>&1 | dtap \
---check package-install-ok \
+(rpm -q lynis  2>&1; echo $?) | dtap \
+--check exit-ok \
 --box - \
 --desc "lynis package is installed"
-
 
 (sudo lynis system audit 2>&1; echo $? ) | dtap \
 --check  exit-ok \
