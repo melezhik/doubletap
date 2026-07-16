@@ -28,10 +28,23 @@ cat /etc/selinux/config  | dtap \
 --box - \
 --desc "selinux config correct"
 
+
+rpm -q lynis  2>&1 | dtap \
+--check package-install-ok \
+--box - \
+--desc "lynis package is installed"
+
+
+(sudo lynis system audit 2>&1; echo $? ) | dtap \
+--check  exit-ok \
+--box - \
+--desc "sudo lynis system audit exits OK"
+
 dtap --report
 
 ex_code=$?
 
 if [[ ex_code -eq 1 ]]; then
+    echo
     dtap --report --details --failures
 fi
