@@ -1,5 +1,3 @@
-export PATH=$PWD:$PATH
-
 session=$(date +%s)
 
 echo OK | dtap \
