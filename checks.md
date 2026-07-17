@@ -25,7 +25,11 @@ Package manager. Default is `dpkg`. Supported values are `dpkg|rpm`
 ## box implimentation example
 
 ```
+# debian based
 dpkg -s nano 2>&1|head -n2
+
+# centos based
+rpm -q nano 2>&1
 ``` 
 
 # web-server-ok
