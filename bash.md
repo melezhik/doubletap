@@ -25,7 +25,6 @@ dpkg -s nano 2>&1 | head -n2 | \
 dtap --box - \
 --session $session \
 --check package-install-ok \
---params package=nano \
 --desc "nano package installed"
 
 dtap  --report  --session $session

@@ -18,7 +18,9 @@ Check if package is installed
 
 ## params
 
-package
+pm
+
+Package manager. Default is `dpkg`. Supported values are `dpkg|rpm`
 
 ## box implimentation example
 

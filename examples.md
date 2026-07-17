@@ -18,7 +18,6 @@ dtap \
 --box - \
 --session $session \
 --check package-install-ok \
---params package=nano \
 --desc "nano package"
 ```
 

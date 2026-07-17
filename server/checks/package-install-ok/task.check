@@ -1,7 +1,9 @@
-begin:
-generator: <<pack
-!bash
-echo "regexp: ^^ 'Package:' \\s+ '"$(config package)"' \$\$"
-pack
-Status: install ok installed
-end:
+generator: <<HERE
+!raku
+if config()<pm> eq "dpkg" {
+  say "Status: install ok installed"
+} elsif config()<pm>	eq "rpm" {
+  say "within: :0:";
+  say "regexp: ^^ \\S+ \$\$";
+}
+HERE
