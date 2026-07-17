@@ -119,11 +119,19 @@ func run_check(c *echo.Context) error {
 		log.Fatalf("run_check, error writing task.check file: %s", err)
 	}
 
-  filename := filepath.Join(path, "config.yaml")
+  filename := filepath.Join("checks", r.CheckId, "config.yaml")
   _, err = os.Stat(filename)
 
 	if err == nil {
+
+    dat, err := os.ReadFile(filename)
+
+    if err != nil {
+      log.Fatalf("run_check, error reading config.yaml file: %s", err)
+    }
+
     err = os.WriteFile(fmt.Sprintf("%s/config.yaml", dir), dat, 0644)
+
     if err != nil {
       log.Fatalf("run_check, error writting config.yaml file: %s",err)
     }

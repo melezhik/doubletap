@@ -5,5 +5,7 @@ if config()<pm> eq "dpkg" {
 } elsif config()<pm>	eq "rpm" {
   say "within: :0:";
   say "regexp: ^^ \\S+ \$\$";
+} else {
+  die "unknown package manager: {config()<pm>}"
 }
 HERE
