@@ -26,4 +26,4 @@ This command should succeed
 dtap  --check_list
 ```
 
-Go to *[bash](/bash)* to see how to incorporate dtap into Bash scripts
+Go to *[bash](/bash.md)* to see how to incorporate dtap into Bash scripts
