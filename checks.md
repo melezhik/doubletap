@@ -176,4 +176,17 @@ Check if sshd has secure setup
 sudo sshd -T
 ```
 
+# tcp-server-ok
+
+Check if a command/proccess binds to tcp port
+
+## box input
+
+see tcp-server box 
+
+## params
+
+command
+
+Command/procces that is expected to bind to a port
 

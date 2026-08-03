@@ -14,7 +14,10 @@ import (
 var folder embed.FS
 
 func BoxList() []string {
-	return []string{"http-client"}
+	return []string{
+    "http-client",
+    "tcp-server",
+  }
 }
 
 func RunBox(box string, params string) string {

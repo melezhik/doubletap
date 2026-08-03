@@ -1,0 +1,17 @@
+begin:
+regexp: ^^ COMMAND
+regexp: ^^ (\S+)
+end:
+
+generator: <<RAKU
+!raku
+if matched() {
+  my $p = capture().head.Str;
+  say "note: process found: $p";
+  if $p eq config()<command> {
+    say "assert: 1 $p == {config()<command>}";
+  } else {
+    say "assert: 0 $p == {config()<command>}";
+  }
+}
+RAKU

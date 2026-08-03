@@ -108,7 +108,7 @@ func main() {
 
 		fmt.Printf("Boxes\n======\n")
 		for _, b := range BoxList() {
-			fmt.Printf("%s", b)
+			fmt.Printf("%s\n", b)
 		}
 		fmt.Printf("\n")
 		return
