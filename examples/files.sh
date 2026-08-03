@@ -1,43 +1,46 @@
-session=$(date +%s)
+export DTAP_SESSION=$(date +%s)
 
 ls -1d templates/ 2>&1 | dtap --box - \
---session $session \
---params path=templates/ \
+--params path=boxes/ \
 --check path-ok \
---desc "templates dir"
+--desc "boxes dir"
 
 ls -1d foo/ 2>&1 | dtap --box - \
---session $session \
 --params path=foo/ \
 --check path-ok \
 --desc "foo dir"
 
 ls README.md 2>&1 \
 | dtap --box - \
---session $session \
 --params path=README.md \
 --check path-ok \
 --desc "readme file"
 
-stat -f %A README.md 2>&1 \
-| dtap --box - \
---session $session \
---params perm=755 \
---check perm-ok \
---desc "readme perm 755"
+if [[ "$(uname)" == "Darwin" ]]; then
+  stat -f %A README.md 2>&1 \
+    | dtap --box - \
+    --params perm=777 \
+    --check perm-ok \
+    --desc "readme perm 777"
+else
+  stat -c %a README.md 2>&1 \
+    | dtap --box - \
+    --params perm=777 \
+    --check perm-ok \
+    --desc "readme perm 777"
+fi
 
 ls foo.md 2>&1 \
 | dtap --box - \
---session $session \
 --params path=foo.md \
 --check path-ok \
 --desc "foo.md file"
 
-dtap  --report  --session $session
+dtap  --report
 
 ex_code=$?
 
 if [[ ex_code -eq 1 ]]; then
     echo
-    dtap --report --details --failures --session $session
+    dtap --report --details --failures
 fi
