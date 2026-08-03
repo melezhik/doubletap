@@ -6,7 +6,7 @@ Check if a text contains a string
 
 word
 
-## box implementation example
+## box input
 
 ```
 echo "hello world"
@@ -22,7 +22,7 @@ pm
 
 Package manager. Default is `dpkg`. Supported values are `dpkg|rpm`
 
-## box implimentation example
+## box input
 
 ```
 # debian based
@@ -41,7 +41,7 @@ has a specific web server flavor
 
 fashion
 
-## box implementation example
+## box input
 
 ```
 curl http://httpbin.org -D - -s -o /deb/null | head -n 6
@@ -55,7 +55,7 @@ Check if redis protected by authentication
 
 redis_url
 
-## box implementation example
+## box input
 
 ```
 redis-cli ping 2>&1
@@ -65,7 +65,7 @@ redis-cli ping 2>&1
 
 Check that file or directory exists
 
-## box implementation example
+## box input
 
 ```
 ls foo/ 2>&1
@@ -75,7 +75,7 @@ ls foo/ 2>&1
 
 Check that command succeeds
 
-## box implementation example
+## box input
 
 ```
 (stupid-command 2>&1; echo $?)
@@ -85,7 +85,7 @@ Check that command succeeds
 
 Check that service is running
 
-## box implementation example
+## box input
 
 ```
 sudo systemctl is-active knot 2>&1
@@ -95,7 +95,7 @@ sudo systemctl is-active knot 2>&1
 
 Check that service is enabled
 
-## box implementation example
+## box input
 
 ```
 sudo systemctl is-enabled knot 2>&1
@@ -109,7 +109,7 @@ Check that dns server has host entry
 
 `dns_host=string,dns_port=int,host=string,ip=string`
 
-## box implementation example
+## box input
 
 ```
 host example.com 127.0.0.1 2>&1
@@ -123,7 +123,7 @@ Check directory/file permission
 
 `perm=int`
 
-## box implementation example
+## box input
 
 ```
 # Mac OS
@@ -133,3 +133,45 @@ stat -f %A README.md 2>&1
 # Linux
 stat -c "%a" README.md
 ```
+
+# firewall-default-deny
+
+Check if firewall default policy is set to deny
+
+## box input
+
+```
+sudo firewall-cmd --list-all
+```
+
+# selinux-config-ok
+
+Check if selinux is enabled
+
+## box input
+
+```
+getenforce
+```
+
+# selinux-config-ok
+
+Check if selinux is enforced via configuration file 
+
+## box input
+
+```
+cat /etc/selinux/config
+```
+
+# sshd-secure
+
+Check if sshd has secure setup
+
+## box input
+
+```
+sudo sshd -T
+```
+
+
