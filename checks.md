@@ -35,11 +35,13 @@ rpm -q nano 2>&1
 # web-server-ok
 
 Check if a web server returns 200 OK, and
-has a specific web server flavor
+has a specific web server header (fashion)
 
 ## params 
 
 fashion
+
+Checks if a server reply has "Server: $fashion" http header. For example `fashion=nginx`
 
 ## box input
 
