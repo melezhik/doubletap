@@ -8,7 +8,7 @@ sudo systemctl is-active firewalld 2>&1 | dtap --box - \
 --check srv-active \
 --desc "firewalld srv is active"
 
-sudo firewall-cmd --list-all | dtap \
+sudo firewall-cmd --list-all 2>&1 | dtap \
 --check firewall-default-deny \
 --box - \
 --desc "firewall default policy is deny"
@@ -18,12 +18,12 @@ sudo sshd -T | dtap \
 --box - \
 --desc "sshd is secure"
 
-getenforce | dtap \
+getenforce 2>&1 | dtap \
 --check selinux-enabled \
 --box - \
 --desc "selinux enabled and enforced"
 
-cat /etc/selinux/config  | dtap \
+cat /etc/selinux/config 2>&1  | dtap \
 --check selinux-config-ok \
 --box - \
 --desc "selinux config correct"
@@ -46,5 +46,5 @@ ex_code=$?
 
 if [[ ex_code -eq 1 ]]; then
     echo
-    dtap --report --details --failures
+    dtap --report --details -failures
 fi
