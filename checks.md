@@ -146,7 +146,7 @@ Check if firewall default policy is set to deny
 sudo firewall-cmd --list-all
 ```
 
-# selinux-config-ok
+# selinux-enabled
 
 Check if selinux is enabled
 
