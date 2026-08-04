@@ -1,13 +1,13 @@
 session=$(date +%s)
 
-dtap --box - \
+dtap \
 --session $session \
 --box tcp-server \
 --check tcp-server-ok \
 --params port=8080,command=nginx \
 --desc "nginx binds to port 80"
 
-dtap --box - \
+dtap \
 --session $session \
 --box tcp-server \
 --check tcp-server-ok \
