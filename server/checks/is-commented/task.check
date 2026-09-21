@@ -1,0 +1,25 @@
+regexp: ^^ \#
+
+code: <<OK
+!raku
+update_state(%( cl => elems(matched()) ));
+OK
+
+:any:
+
+generator: <<OK
+!raku
+my $c = elems(matched());
+my $cl = get_state()<cl>;
+
+say "note: all lines: $c";
+say "note: commented lines: $cl";
+
+if $c > $cl {
+  say "assert: 0 all lines are commented";
+} else {
+  say "assert: 1 all lines are commented";
+}
+
+OK
+

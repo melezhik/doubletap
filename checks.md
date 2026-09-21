@@ -190,3 +190,15 @@ command
 
 Command/procces that is expected to bind to a port
 
+
+# is-commented
+
+File content has only commented lines
+
+## box input
+
+cat /etc/cron.d/script | \
+dtap \
+--check is-commented \
+--box - \
+--desc "/etc/cron.d/script is commented"
