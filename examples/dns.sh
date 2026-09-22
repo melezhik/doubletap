@@ -2,9 +2,13 @@ session=$(date +%s)
 
 host example.com 127.0.0.1 2>&1 | dtap --box - \
 --session $session \
---params path=dns_host=127.0.0.1,dns_port=53,ip=172.20.0.100,host=example.com \
+--params dns_host=foo.dns.x,\
+dns_host_ip=10.10.13.1,\
+host=foo.host.x,\
+ip=10.10.17.41,\
+alias=host.bar.y \
 --check dns-ok \
---desc "dns example.com"
+--desc "dns foo.host.x"
 
 dtap  --report  --session $session
 

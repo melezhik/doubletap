@@ -109,7 +109,7 @@ Check that dns server has host entry
 
 ## params
 
-`dns_host=string,dns_port=int,host=string,ip=string`
+`dns_host=foo.dns.x,dns_host_ip=10.10.13.1,host=foo.host.x,ip=10.10.17.41,alias=host.bar.y`
 
 ## box input
 
