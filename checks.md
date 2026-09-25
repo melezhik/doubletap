@@ -103,6 +103,22 @@ Check that service is enabled
 sudo systemctl is-enabled knot 2>&1
 ```
 
+# srv-not-active
+
+Opposite to srv-active
+
+#  box input
+
+see `srv-active`
+
+# srv-disabled 
+
+Opposite to srv-enabled
+
+#  box input
+
+see `srv-enabled`
+
 # dns-ok
 
 Check that dns server has host entry
@@ -178,7 +194,7 @@ sudo sshd -T
 
 # tcp-server-ok
 
-Check if a command/proccess binds to tcp port
+Check if a command/process binds to tcp port
 
 ## box input
 
@@ -188,7 +204,7 @@ see tcp-server box
 
 command
 
-Command/procces that is expected to bind to a port
+Command/process that is expected to bind to a port
 
 # is-commented
 
