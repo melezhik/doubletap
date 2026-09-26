@@ -41,7 +41,9 @@ has a specific web server header (fashion)
 
 fashion
 
-Checks if a server reply has "Server: $fashion" http header. For example `fashion=nginx`
+Checks if a server reply has "Server: $fashion" http header. For example:
+
+`fashion=nginx`
 
 ## box input
 
@@ -71,7 +73,6 @@ Check that file or directory exists
 
 ```
 # file
-
 ls /etc/cron.d/job.config
 
 # directory
