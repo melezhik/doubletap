@@ -73,6 +73,14 @@ Check that file or directory exists
 ls foo/ 2>&1
 ```
 
+## params
+
+`path`
+
+```
+path=foo/
+```
+
 # exit-ok
 
 Check that command succeeds
