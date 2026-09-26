@@ -70,7 +70,12 @@ Check that file or directory exists
 ## box input
 
 ```
-ls foo/ 2>&1
+# file
+
+ls /etc/cron.d/job.config
+
+# directory
+ls -d /etc/cron.d/ 2>&1
 ```
 
 ## params
@@ -78,7 +83,8 @@ ls foo/ 2>&1
 `path`
 
 ```
-path=foo/
+path=/etc/cron.d/job.config
+path=/etc/cron.d/
 ```
 
 # exit-ok
