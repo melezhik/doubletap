@@ -212,11 +212,13 @@ File content has only commented lines
 
 ## box input
 
-cat /etc/cron.d/script | \
+```
+cat /etc/cron.d/job.conf | \
 dtap \
 --check is-commented \
 --box - \
---desc "/etc/cron.d/script is commented"
+--desc "/etc/cron.d/job.conf is commented"
+```
 
 # is-not-commented
 
@@ -224,8 +226,10 @@ File content has no commented lines
 
 ## box input
 
-cat /etc/cron.d/script | \
+```
+cat /etc/cron.d/job.conf | \
 dtap \
 --check is-not-commented \
 --box - \
---desc "/etc/cron.d/script is not commented"
+--desc "/etc/cron.d/job.conf is not commented"
+```
